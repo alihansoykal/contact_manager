@@ -87,7 +87,49 @@ class _ContactListState extends State<ContactList> {
                                   print(isFavorite(contact));
 
                                   if (isFavorite(contact) == "true") {
-                                    updateFavorite(id(contact), "false");
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => AlertDialog(
+                                          title: Text('Add to Favorites'),
+                                          content: const Text(
+                                              'Do you want to remove him/her to your favorites?'),
+                                          actions: [
+                                            ElevatedButton(
+                                              style:
+                                              ElevatedButton.styleFrom(
+                                                primary: kFourthColor,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text("No"),
+                                            ),
+                                            ElevatedButton(
+                                                style: ElevatedButton
+                                                    .styleFrom(
+                                                  primary: kSecondaryColor,
+                                                ),
+                                                child: Text("Yes"),
+                                                onPressed: () {
+                                                  updateFavorite(
+                                                      id(contact), "false");
+                                                  Navigator.pop(context);
+                                                  Timer(
+                                                      Duration(seconds: 1),
+                                                          () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (_) =>
+                                                                    ProfilePage(
+                                                                        uid: id(
+                                                                            contact)))).then(
+                                                                (_) => setState(
+                                                                    () {}));
+                                                      });
+                                                })
+                                          ],
+                                        ));
                                   } else {
                                     showDialog(
                                         context: context,

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.topfreelance.contact_manager.contact_manager">
    <application
-        android:label="contact_manager"
+        android:label="Contact Manager"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

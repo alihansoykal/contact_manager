@@ -32,56 +32,59 @@ class ProfilePage extends StatelessWidget {
         appBar: CustomAppBar(
           uid: this.uid,
         ),
-        body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: FutureBuilder<List<dynamic>>(
-              future: getContact(this.uid),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  var contact = snapshot.data[0];
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                        title: Text(
-                          "Name",
-                          style: _style(),
+        body: SingleChildScrollView(
+
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: FutureBuilder<List<dynamic>>(
+                future: getContact(this.uid),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    var contact = snapshot.data[0];
+                    return Column(
+                      children: <Widget>[
+                        ListTile(
+                          title: Text(
+                            "Name",
+                            style: _style(),
+                          ),
+                          subtitle: Text(name(contact)),
                         ),
-                        subtitle: Text(name(contact)),
-                      ),
-                      ListTile(
-                        title: Text(
-                          "Email",
-                          style: _style(),
+                        ListTile(
+                          title: Text(
+                            "Email",
+                            style: _style(),
+                          ),
+                          subtitle: Text(email(contact)),
                         ),
-                        subtitle: Text(email(contact)),
-                      ),
-                      ListTile(
-                        title: Text(
-                          "Gender",
-                          style: _style(),
+                        ListTile(
+                          title: Text(
+                            "Gender",
+                            style: _style(),
+                          ),
+                          subtitle: Text(gender(contact)),
                         ),
-                        subtitle: Text(gender(contact)),
-                      ),
-                      ListTile(
-                        title: Text(
-                          "Date of Birth",
-                          style: _style(),
+                        ListTile(
+                          title: Text(
+                            "Date of Birth",
+                            style: _style(),
+                          ),
+                          subtitle: Text(DOB(contact)),
                         ),
-                        subtitle: Text(DOB(contact)),
-                      ),
-                      ListTile(
-                        title: Text(
-                          "Phone number",
-                          style: _style(),
+                        ListTile(
+                          title: Text(
+                            "Phone number",
+                            style: _style(),
+                          ),
+                          subtitle: Text(phone(contact)),
                         ),
-                        subtitle: Text(phone(contact)),
-                      ),
-                    ],
-                  );
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              }),
+                      ],
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                }),
+          ),
         ),
       ),
     );
