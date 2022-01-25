@@ -6,11 +6,8 @@ import 'package:contact_manager/services/contact_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import '../models/contact_manager.dart';
-import 'add_contact_screen.dart';
 
 class ContactList extends StatefulWidget {
   @override
@@ -90,32 +87,33 @@ class _ContactListState extends State<ContactList> {
                                     showDialog(
                                         context: context,
                                         builder: (_) => AlertDialog(
-                                          title: Text('Add to Favorites'),
-                                          content: const Text(
-                                              'Do you want to remove him/her to your favorites?'),
-                                          actions: [
-                                            ElevatedButton(
-                                              style:
-                                              ElevatedButton.styleFrom(
-                                                primary: kFourthColor,
-                                              ),
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text("No"),
-                                            ),
-                                            ElevatedButton(
-                                                style: ElevatedButton
-                                                    .styleFrom(
-                                                  primary: kSecondaryColor,
+                                              title:
+                                                  Text('Remove from Favorites'),
+                                              content: const Text(
+                                                  'Do you want to remove him/her to your favorites?'),
+                                              actions: [
+                                                ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary: kFourthColor,
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("No"),
                                                 ),
-                                                child: Text("Yes"),
-                                                onPressed: () {
-                                                  updateFavorite(
-                                                      id(contact), "false");
-                                                  Navigator.pop(context);
-                                                  Timer(
-                                                      Duration(seconds: 1),
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      primary: kSecondaryColor,
+                                                    ),
+                                                    child: Text("Yes"),
+                                                    onPressed: () {
+                                                      updateFavorite(
+                                                          id(contact), "false");
+                                                      Navigator.pop(context);
+                                                      Timer(
+                                                          Duration(seconds: 1),
                                                           () {
                                                         Navigator.push(
                                                             context,
@@ -124,12 +122,12 @@ class _ContactListState extends State<ContactList> {
                                                                     ProfilePage(
                                                                         uid: id(
                                                                             contact)))).then(
-                                                                (_) => setState(
-                                                                    () {}));
+                                                            (_) => setState(
+                                                                () {}));
                                                       });
-                                                })
-                                          ],
-                                        ));
+                                                    })
+                                              ],
+                                            ));
                                   } else {
                                     showDialog(
                                         context: context,

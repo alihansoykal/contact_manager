@@ -57,17 +57,6 @@ class _SearchContactScreenState extends State<SearchContactScreen> {
     );
   }
 
-  Widget _buildBar(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      title: _appBarTitle,
-      leading: new IconButton(
-        icon: _searchIcon,
-        onPressed: _searchPressed,
-      ),
-    );
-  }
-
   Widget _buildList() {
     if (!(_searchText.isEmpty)) {
       List tempList = [];
@@ -110,13 +99,25 @@ class _SearchContactScreenState extends State<SearchContactScreen> {
       if (this._searchIcon.icon == Icons.search) {
         this._searchIcon = Icon(Icons.close);
         this._appBarTitle = TextField(
+          style: TextStyle(color: Colors.white),
           controller: _filter,
           decoration: new InputDecoration(
-              prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: kFourthColor),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              hintStyle: TextStyle(color: Colors.white),
+              prefixIcon: new Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              hintText: 'Search...'),
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
-        this._appBarTitle = new Text('Search Example');
+        this._appBarTitle = new Text('Search Contacts');
         filteredNames = names;
         _filter.clear();
       }
