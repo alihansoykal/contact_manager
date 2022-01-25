@@ -1,6 +1,6 @@
 # Contact Manager
 
-A Contact Manager App using the Flutter framework.
+A Contact Manager App built by Flutter.
 
 ## Some screenshots from the app
 <img src="https://user-images.githubusercontent.com/72455964/151019630-51b36844-7a4e-4475-ada2-bf65273723d1.png" width="162" height="337" /> <img src="https://user-images.githubusercontent.com/72455964/151019657-9f723626-8ef9-4bb5-bf6a-8b5ca49e3bbd.png" width="162" height="337" /> <img src="https://user-images.githubusercontent.com/72455964/151019667-cd29e3b6-e803-4792-85ec-a1d7bcd09d16.png" width="162" height="337" /> <img src="https://user-images.githubusercontent.com/72455964/151019680-5df87f5b-f7a7-4b54-8df1-c738a717590d.png" width="162" height="337" />
